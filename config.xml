@@ -118,7 +118,7 @@
     <!-- Define custom URL scheme and together with iOS file association to handle when the app is opened from an external app -->
     <plugin name="cordova-plugin-customurlscheme" version="4.0.0">
       <param name="URL_SCHEME" value="ezbooks" />
-    <plugin>
+    </plugin>
     
     <!-- To Handle receive file share (open from another app) in Android -->
 <!--     <gap:plugin name="com.virtualartifacts.webintent" version="1.0.0" /> -->

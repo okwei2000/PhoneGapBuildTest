@@ -112,7 +112,7 @@
     <plugin name="cordova-plugin-file" spec="3.0.0" />
     <plugin name="cordova-plugin-file-transfer" spec="1.4.0"/>
     <plugin name="cordova-plugin-camera" spec="1.2.0"/>
-    <gap:plugin name="org.apache.cordova.inappbrowser" spec="1.1.1" source="npm"/>
+    <plugin name="cordova-plugin-inappbrowser" spec="1.1.1" />
     <plugin name="cordova-plugin-statusbar" spec="2.0.0"/>
     
     <!-- Define custom URL scheme and together with iOS file association to handle when the app is opened from an external app -->

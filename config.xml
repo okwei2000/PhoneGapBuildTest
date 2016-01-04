@@ -124,8 +124,8 @@
 <!--     <gap:plugin name="com.virtualartifacts.webintent" version="1.0.0" /> -->
 <!--     <gap:plugin name="com.qdev.webintent" version="1.0.1" /> -->
     
-    <plugin name="cordova-plugin-apprate2 " version="0.1.7" />
-    <plugin name="cordova-plugin-admob" version="2.10.0"/>
+    <plugin name="cordova-plugin-apprate" spec="1.1.11" />
+    <plugin name="cordova-plugin-admob" spec="2.10.0"/>
 <!--     <gap:plugin name="phonegap-plugin-mobile-accessibility" version="1.0.0" source="npm" /> -->
     
     <!-- In App Purchase -->

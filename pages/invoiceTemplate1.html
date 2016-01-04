@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+<meta name="description" content="">
+<meta name="keywords" content="mobile bookkeeping book keeping free online ezbooks easy expense income">
+<!-- These meta header allow the website run full screen in iOS safari. For screen shoot -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>EZBooks</title>
+
+<link rel="stylesheet" type="text/css" href="../libs/bootstrap-3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../css/invoice.css">
+<script src="../libs/jquery-1.11.1/jquery.min.js"></script>
+<script src="../libs/jquery.urldecoder.min.js"></script>
+</head>
+
+<body>
+    <div id="invoicePreview" class="container">
+                      <div class="row">
+                        <div class="col-xs-6">
+                            <img class="invoice-business-logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNgqAcAAIIAgLO2btEAAAAASUVORK5CYII=">
+                            <div class="text-invoice-business-name"></div>
+                            <div class="text-invoice-business-address"></div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div style="text-align: right" class="text-invoice">INVOICE</div>
+                            <div style="text-align: right" class="text-invoice-number"></div>
+                            <br>
+                            <div style="text-align: right" class="text-invoice-balanceDue">Balance Due</div>
+                            <div style="text-align: right" class="text-invoice-balanceDue-val"></div>
+                        </div>
+                      </div>
+                      <div class="row">&nbsp;</div>
+                      <div class="row">
+                        <div class="col-xs-12">
+                            <div class="text-invoice-billTo">Bill To</div>
+                        </div>                      
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-6">
+                            <div class="text-invoice-customer-name"></div>
+                            <div class="text-invoice-customer-address"></div>
+                            <div class="text-invoice-customer-phone"></div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div style="text-align:right" class="text-invoice-date">Invoice Date:</div>
+                            <div style="text-align:right" class="text-invoice-dueDate">Due Date:</div>
+                            <div style="text-align:right" class="text-invoice-poNumber">P.O.#:</div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div style="text-align:right" class="text-invoice-date-val"></div>
+                            <div style="text-align:right" class="text-invoice-dueDate-val"></div>
+                            <div style="text-align:right" class="text-invoice-poNumber-val"></div>
+                        </div>
+                      </div>
+                      <br>
+                      <table class="table table-condensed table-items">
+                        <thead>
+                          <tr>
+                            <th class="col-xs-1">#</th>
+                            <th class="col-xs-6">Item</th>
+                            <th class="col-xs-1">Qty</th>
+                            <th class="col-xs-1"><div style="text-align:right">Rate</div></th>
+                            <th class="col-xs-3"><div style="text-align:right">Amount</div></th>
+                          </tr>
+                        </thead>
+                        <tbody class="tbody-invoice-items">
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><div style="text-align:right"></div></td>
+                            <td><div style="text-align:right"></div></td>                       
+                          </tr>                          
+                        </tbody>
+                      </table>
+                      <br>
+                      <div class="row">
+                        <div class="col-xs-8 col-sm-9">
+                            <div style="text-align:right" class="text-invoice-subTotal">Sub Total</div>
+                            <div style="text-align:right" class="text-invoice-tax">Tax</div>
+                            <div style="text-align:right" class="text-invoice-discount"></div>
+                            <div style="text-align:right" class="text-invoice-shipping">Shipping charge</div>
+                            <div style="text-align:right" class="text-invoice-adjustment">Adjustment</div>
+                        </div>
+                        <div class="col-xs-4 col-sm-3">
+                            <div style="text-align:right" class="text-invoice-subTotal-val"></div>
+                            <div style="text-align:right" class="text-invoice-tax-val"></div>
+                            <div style="text-align:right" class="text-invoice-discount-val"></div>
+                            <div style="text-align:right" class="text-invoice-shipping-val"></div>
+                            <div style="text-align:right" class="text-invoice-adjustment-val"></div>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row">
+                        <div class="col-xs-8 col-sm-9">
+                            <div style="text-align:right" class="text-invoice-total">Total</div>
+                        </div>
+                        <div class="col-xs-4 col-sm-3">
+                            <div style="text-align:right" class="text-invoice-total-val"></div>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row">
+                        <div class="col-xs-12">
+                            <div class="text-invoice-note"><b>Notes:</b></div>
+                            <div class="text-invoice-note-val"></div>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row">
+                        <div class="col-xs-12">
+                            <div class="text-invoice-terms"><b>Terms:</b></div>
+                            <div class="text-invoice-terms-val"></div>
+                        </div>
+                      </div> 
+    </div>
+</body>
+</html>
+
+<script>
+var logoRendered=false;
+var textRendered=false;
+function loadInvoice(invoiceId){
+        return $.ajax({
+            //businessId is ignored, pass anything
+            url: '/bookkeeping/api/businesses/0/invoices/'+invoiceId+'?includeBussiness=true',
+            type: "GET",
+            cache: false,
+            contentType: "application/json; charset=utf-8",
+            success: function( result, textStatus, jqXHR ){
+                var invoice = result.invoice;
+                renderPreview(invoice);
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                //alert('error');
+                //renderPreview();
+                //window.status="done";
+            },
+            complete: function(){
+                window.status="done";
+            }  
+        });
+    };
+
+function renderPreview(invoice){
+        var business = invoice.business;
+        var currencySymbol = business.currency.symbol;
+        
+        //Business log
+        if(invoice.business.businessLogo){
+            $('#invoicePreview .invoice-business-logo').show();
+            $('#invoicePreview .invoice-business-logo').attr('src', '/bookkeeping/api/businesses/'+business.id+'/logos/1?r='+(new Date()).getTime());
+            $('#invoicePreview .invoice-business-logo').on('load', function(){
+                logoRendered=true;
+            });
+        }else{
+            logoRendered=true;
+        }
+        $('#invoicePreview .text-invoice-business-name').text(business.name);
+        if($.trim(business.address).length>0){
+            $('#invoicePreview .text-invoice-business-address').text(business.address);
+            $('#invoicePreview .text-invoice-business-address').show();
+        }
+        
+        $('#invoicePreview .text-invoice-number').text('Invoice# '+invoice.number);
+        //poNumber
+        if($.trim(invoice.poNumber).length>0){
+            $('#invoicePreview .text-invoice-poNumber').show();
+            $('#invoicePreview .text-invoice-poNumber-val').show();
+            $('#invoicePreview .text-invoice-poNumber-val').text(invoice.poNumber);
+        }
+        if($.trim(invoice.date).length>0){
+            $('#invoicePreview .text-invoice-date').show();
+            $('#invoicePreview .text-invoice-date-val').show();
+            $('#invoicePreview .text-invoice-date-val').text(invoice.date);
+        }
+        if($.trim(invoice.dueDate).length>0){
+            $('#invoicePreview .text-invoice-dueDate').show();
+            $('#invoicePreview .text-invoice-dueDate-val').show();
+            $('#invoicePreview .text-invoice-dueDate-val').text(invoice.dueDate);
+        }
+        
+        //customer
+        $('#invoicePreview .text-invoice-customer-name').text(invoice.customer.name);
+        $('#invoicePreview .text-invoice-customer-address').text(invoice.customer.address);
+        
+        //items
+        var subTotal=0;
+        var tax=0;
+        $('.tbody-invoice-items').empty();
+        for(var i=0; i<invoice.invoiceItems.length; i++){
+            var item = invoice.invoiceItems[i];
+            var itemRow = $('<tr>'
+                            +'<td class="item-number">1</td>'
+                            +'<td><div class="item-name"></div><div class="item-description"></div></td>'
+                            +'<td class="item-quatity">1.5</td>'
+                            +'<td><div style="text-align:right" class="item-rate">34</div></td>'
+                            +'<td><div style="text-align:right" class="item-amount">68.33</div></td>'
+                          +'</tr>');
+            itemRow.find('.item-number').text(i+1);
+            itemRow.find('.item-name').text(item.name);
+            itemRow.find('.item-description').text(item.description);
+            itemRow.find('.item-quatity').text(item.quatity.toFixed(2));
+            itemRow.find('.item-rate').text(item.rate.toFixed(2));
+            itemRow.find('.item-amount').text((item.rate*item.quatity).toFixed(2));
+            $('.tbody-invoice-items').append(itemRow);
+            
+            subTotal += (item.rate*item.quatity);
+            tax += (item.rate*item.quatity)*item.tax/100;
+        }
+        
+        $('#invoicePreview .text-invoice-subTotal-val').text(currencySymbol+" "+subTotal.toFixed(2));
+        
+        if(tax>0){
+            $('#invoicePreview .text-invoice-tax').show();
+            $('#invoicePreview .text-invoice-tax-val').show();
+            $('#invoicePreview .text-invoice-tax-val').text(currencySymbol+" "+tax.toFixed(2));
+        }
+        if(invoice.discount!=0){
+            $('#invoicePreview .text-invoice-discount').show();
+            $('#invoicePreview .text-invoice-discount-val').show();
+            $('#invoicePreview .text-invoice-discount').text('Discount ('+invoice.discount+'%)');
+            $('#invoicePreview .text-invoice-discount-val').text(currencySymbol+" "+(0-((subTotal+tax)*invoice.discount/100).toFixed(2)));
+        }
+        if(invoice.shipping!=0){
+            $('#invoicePreview .text-invoice-shipping').show();
+            $('#invoicePreview .text-invoice-shipping-val').show();
+            $('#invoicePreview .text-invoice-shipping-val').text(currencySymbol+" "+invoice.shipping.toFixed(2));
+        }
+        if(invoice.adjustment!=0){
+            $('#invoicePreview .text-invoice-adjustment').show();
+            $('#invoicePreview .text-invoice-adjustment-val').show();
+            $('#invoicePreview .text-invoice-adjustment-val').text(currencySymbol+" "+invoice.adjustment.toFixed(2));
+        }
+        //total
+        var total = subTotal+tax+invoice.shipping+invoice.adjustment-((subTotal+tax)*invoice.discount/100);
+        $('#invoicePreview .text-invoice-total-val').text(currencySymbol+" "+total.toFixed(2));
+        $('#invoicePreview .text-invoice-balanceDue-val').text(currencySymbol+" "+total.toFixed(2));
+        $('#invoicePreview .text-invoice-balance-val').text(total.toFixed(2));
+        
+        //note
+        if($.trim(invoice.customerNote).length>0){
+            $('#invoicePreview .text-invoice-note').show();
+            $('#invoicePreview .text-invoice-note-val').show();
+            $('#invoicePreview .text-invoice-note-val').text(invoice.customerNote);
+        }
+        if($.trim(invoice.terms).length>0){
+            $('#invoicePreview .text-invoice-terms').show();
+            $('#invoicePreview .text-invoice-terms-val').show();
+            $('#invoicePreview .text-invoice-terms-val').text(invoice.terms);
+        }
+        
+        //if logo is not rendered yet, give it another 500ms.
+        if(!logoRendered){
+            setTimeout(function(){
+                window.status="done";
+            }, 500);
+        }
+};
+
+function resetPreview(){
+    $('#invoicePreview .text-invoice-business-address').hide();
+    $('#invoicePreview .text-invoice-tax').hide();
+    $('#invoicePreview .text-invoice-tax-val').hide();
+    $('#invoicePreview .text-invoice-discount').hide();
+    $('#invoicePreview .text-invoice-discount-val').hide();
+    $('#invoicePreview .text-invoice-shipping').hide();
+    $('#invoicePreview .text-invoice-shipping-val').hide();
+    $('#invoicePreview .text-invoice-adjustment').hide();
+    $('#invoicePreview .text-invoice-adjustment-val').hide();
+    $('#invoicePreview .text-invoice-note').hide();
+    $('#invoicePreview .text-invoice-note-val').hide();
+    $('#invoicePreview .text-invoice-poNumber').hide();
+    $('#invoicePreview .text-invoice-poNumber-val').hide();
+    $('#invoicePreview .text-invoice-terms').hide();
+    $('#invoicePreview .text-invoice-terms-val').hide();
+    $('#invoicePreview .text-invoice-date').hide();
+    $('#invoicePreview .text-invoice-date-val').hide();
+    $('#invoicePreview .text-invoice-dueDate').hide();
+    $('#invoicePreview .text-invoice-dueDate-val').hide();
+    $('#invoicePreview .invoice-business-logo').hide().attr('src', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNgqAcAAIIAgLO2btEAAAAASUVORK5CYII=');
+};
+
+//use jQuery(window).load to wait for image to finish loading
+//http://stackoverflow.com/questions/4494437/jquery-or-javascript-determine-when-image-finished-loading
+$(document).ready(function(){
+    var invoiceId = $.url.parse(window.location).params.id;
+    resetPreview();
+    loadInvoice(invoiceId);
+})
+</script> 

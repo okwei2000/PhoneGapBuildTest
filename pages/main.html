@@ -1,0 +1,2120 @@
+<view>
+    <div class="ios-status-bar"></div>
+    <header class="main">
+        <div class="brand">
+            <a href="javascript:void(0)" id="menu-nav" class="nav-visible menu">
+                <i class="fa fa-bars fa-fw"></i>
+            </a> 
+            <a href="javascript:void(0)" id="menu-back" class="nav-visible menu-back"><i class="fa fa-chevron-left fa-fw"></i></a> 
+<!--             <span class="logo"><a href="javascript:void(0)">EZBooks</a></span> -->
+            <span class="logo"><span id="logo-icon" class="icon"></span><span class="name"></span></span>
+        </div>
+        <!-- 
+        <nav class="navbar-left">
+            <ul class="list-inline">
+                <li class="menu-home"><a href="#v=home"> <i class="fa fa-home fa-fw"></i> Home</a></li>
+                <li class="menu-expense"><a href="#v=expenseList"><i class="fa fa-pencil-square-o fa-fw"></i> Expenses</a></li>            
+                <li class="menu-invoice"><a href="#v=invoiceList"><i class="fa fa-usd fa-fw"></i> Invoices</a></li>
+                <li class="menu-reports"><a href="#v=reportExpenseByCategory"><i class="fa fa-pie-chart fa-fw"></i> Reports</a></li> 
+                <li class="menu-login"><a href="#v=login"><i class="fa fa-user fa-fw"></i> Login / Register</a></li>
+                <li class="menu-settings"><a href="#v=settings"><i class="fa fa-cog fa-fw"></i> Settings</a></li>
+                <li class="menu-logout" data-toggle="modal" data-target="#confirm-logout"><a href="javascript:void(0)"><i class="fa fa-lock fa-fw"></i> Logout</a></li>
+            </ul>
+        </nav>
+        -->
+        <nav class="navbar-right">
+            <ul class="list-inline">
+                <!-- https://css-tricks.com/fighting-the-space-between-inline-block-elements/ -->
+                <li id="nav-add" class="hidden-sm hidden-md hidden-lg"><a href="javascript:void(0)" class="btn"><i class="glyphicon glyphicon-plus"></i></a>
+                </li><li id="nav-save"><a href="javascript:void(0)" class="btn"><i class="glyphicon glyphicon-floppy-disk"></i></a>
+                </li><li id="nav-delete"><a href="javascript:void(0)" class="btn"><i class="glyphicon glyphicon-trash"></i></a>
+                </li><li id="nav-refresh"><a href="javascript:void(0)" class="btn"><i class="glyphicon glyphicon-refresh"></i></a>
+                </li><li id="nav-filter"><a href="javascript:void(0)" class="btn"><i class="glyphicon glyphicon-search"></i></a>
+                </li><li id="nav-edit"><a href="javascript:void(0)" class="btn"><i class="glyphicon glyphicon-pencil"></i></a>
+                </li><li id="nav-mail"><a href="javascript:void(0)" class="btn"><i class="glyphicon glyphicon-envelope"></i></a>
+                </li><li id="nav-export"><a href="javascript:void(0)" class="btn"><i class="glyphicon glyphicon-export"></i></a>
+                </li><li id="nav-menu">
+                    <a href="javascript:void(0)" class="btn" data-toggle="dropdown"><i class="glyphicon glyphicon-option-vertical"></i></a>
+                    <ul class="dropdown-menu">
+                        <li id="nav-menu-preview"><a href="javascript:void(0)" class="btn">Preview / Mail</a></li>
+                        <li id="nav-menu-send"><a href="javascript:void(0)" class="btn">Send</a></li>
+                        <li id="nav-menu-duplicate"><a href="javascript:void(0)" class="btn">Duplicate</a></li>
+                        <li id="nav-menu-delete"><a href="javascript:void(0)" class="btn">Delete</a></li>
+                        <li id="nav-menu-invoice-view-pdf"><a href="javascript:void(0)" class="btn">View PDF</a></li>
+                        <li id="nav-menu-invoice-mark-as-paid"><a href="javascript:void(0)" class="btn">Mark as Paid</a></li>
+                    </ul>
+                </li>
+                <!-- <li id="nav-export" class="hidden-sm hidden-md hidden-lg"><a href="javascript:void(0)" class="btn"><i class="glyphicon glyphicon-export"></i></a></li> -->
+                <!-- <li id="profile-nav"><a href="javascript:void(0)"><i class="glyphicon glyphicon-user"></i></a></li> -->
+            </ul>            
+        </nav>
+    </header>
+
+    <nav class="side left-menu">
+        <header>
+            <div class="container-business">
+               <div class="business-letter-circle">K</div>
+               <span class="select-business-downarrow"><i class="fa fa-sort-down"></i></span>                
+               <select class="select-business form-control"></select>
+            </div>
+        </header>
+        <section>
+            <ul class="list-unstyled">
+                <li class="menu-home"><a href="#v=home"> <i class="fa fa-home fa-fw"></i><span class="left-menu-text"> Home</span></a></li>
+                <li class="menu-expense"><a href="#v=expenseList"> <i class="fa fa-pencil-square-o fa-fw"></i><span class="left-menu-text"> Expenses</span></a></li>
+                <li class="menu-invoice"><a href="#v=invoiceList"> <i class="fa fa-usd fa-fw"></i><span class="left-menu-text"> Invoices</span></a></li>
+<!--                 <li class="menu-banking"><a href="#v=bankingList"> <i class="fa fa-university fa-fw"></i><span class="left-menu-text"> Banking</span></a></li> -->
+<!--                 <li class="menu-documents"><a href="#v=documentsList"> <i class="fa fa-file-text fa-fw"></i><span class="left-menu-text"> Documents</span></a></li> -->
+                <li class="menu-contacts"><a href="#v=contactList"> <i class="fa fa-users fa-fw"></i><span class="left-menu-text"> Contacts</span></a></li>
+                <li class="menu-reports"><a href="#v=reportList"> <i class="fa fa-pie-chart fa-fw"></i><span class="left-menu-text"> Reports</span></a></li> 
+                <li class="menu-export"><a href="#v=businessExport"> <i class="fa fa-eject fa-fw"></i><span class="left-menu-text"> Export</span></a></li>
+                <li class="menu-login"><a href="#v=login"> <i class="fa fa-sign-in fa-fw"></i><span class="left-menu-text"> Login / Register</span></a></li>
+                <li class="menu-settings"><a href="#v=settings"> <i class="fa fa-cog fa-fw"></i><span class="left-menu-text"> Settings</span></a></li>
+<!--                 <li class="menu-logout" data-toggle="modal" data-target="#confirm-logout"><a href="javascript:void(0)"><i class="fa fa-lock fa-fw"></i><span class="left-menu-text"> Logout</span></a></li> -->
+                <li class="menu-about"><a href="#v=about"> <i class="fa fa-question-circle fa-fw"></i><span class="left-menu-text"> About</span></a></li>       
+            </ul>
+        </section>
+    </nav>
+    
+    <nav class="side nav-filter">
+        <header>Search</header>
+        <div class="body">
+            <form class="form-ezbooks form-expense-search" onsubmit="return false;">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="keyword" placeholder="Enter keywords and hit enter">
+                </div>
+                <div class="row">
+                    <div class="form-group col-xs-6">
+                        <label class="control-label">Start Date</label>
+                        <input type="date" class="form-control" name="startDate">
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <label class="control-label">End Date</label>
+                        <input type="date" class="form-control" name="endDate">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Category</label>
+                    <select class="form-control" name="categoryId">
+                    </select>
+                </div>
+                
+                <div class="row">
+                    <div class="form-group col-xs-7">
+                        <label class="control-label">Sort By</label>
+                        <select class="form-control" name="sortName" placeholder="Select Sort">
+                            <option value="creationDate">Date (Created)</option>
+                            <option value="date">Date (Expense)</option>
+                            <option value="lastModifiedDate">Date (Last Modified)</option>
+                            <option value="total">Price</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-xs-5">
+                        <label class="control-label">Direction</label>
+                        <select class="form-control" name="sortDir">
+                            <option value="desc">&darr; Descending</option>
+                            <option value="asc">&uarr; Ascending</option>
+                        </select>
+                    </div>            
+                </div>
+                <div class="form-group">
+                    <br>
+                    <div class="col-xs-6 btn-search-reset-container">
+                        <button id="btn-search-reset" class="btn btn-lg btn-danger btn-block" type="reset">Reset</button>
+                    </div>            
+                    <div class="col-xs-6 btn-search-container">
+                        <button id="btn-search" class="btn btn-lg btn-primary btn-block" type="submit">
+                            Search
+                        </button>
+                    </div>
+                </div>                         
+            </form>
+            
+            <form class="form-ezbooks form-invoice-search" onsubmit="return false;">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="keyword" placeholder="Enter keywords and hit enter">
+                </div>
+                <div class="row">
+                    <div class="form-group col-xs-6">
+                        <label class="control-label">Start Date</label>
+                        <input type="date" class="form-control" name="startDate">
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <label class="control-label">End Date</label>
+                        <input type="date" class="form-control" name="endDate">
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="form-group col-xs-7">
+                        <label class="control-label">Sort By</label>
+                        <select class="form-control" name="sortName">
+                            <option value="creationDate">Date (Created)</option>
+                            <option value="date">Date (Invoice)</option>
+                            <option value="lastModifiedDate">Date (Last Modified)</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-xs-5">
+                        <label class="control-label">Direction</label>
+                        <select class="form-control" name="sortDir">
+                            <option value="desc">&darr; Descending</option>
+                            <option value="asc">&uarr; Ascending</option>
+                        </select>
+                    </div>            
+                </div>
+                <div class="form-group">
+                    <br>
+                    <div class="col-xs-6" style="padding: 0px 5px 0px 0px;">
+                        <button id="btn-invoice-search-reset" class="btn btn-lg btn-danger btn-block" type="reset">Reset</button>
+                    </div>            
+                    <div class="col-xs-6" style="padding: 0px 5px 0px 0px;">
+                        <button id="btn-invoice-search" class="btn btn-lg btn-primary btn-block" type="submit">
+                            Search
+                        </button>
+                    </div>
+                </div>                      
+            </form>
+        </div>
+    </nav>
+    
+    <section class="block tabs grid">
+        <div class="tab-menu hidden">
+            <div class="container">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#home" data-toggle="tab"></a></li>
+                    <li><a href="#profile" data-toggle="tab"></a></li>
+                    <li><a href="#expenseList" data-toggle="tab"></a></li>
+                    <li><a href="#expense" data-toggle="tab"></a></li>
+                    <li><a href="#invoicePreview" data-toggle="tab"></a></li>
+                    <li><a href="#invoiceList" data-toggle="tab"></a></li>
+                    <li><a href="#invoice" data-toggle="tab"></a></li>
+                    <li><a href="#invoiceItem" data-toggle="tab"></a></li>
+                    <li><a href="#bankingList" data-toggle="tab"></a></li>
+                    <li><a href="#documentsList" data-toggle="tab"></a></li>
+                    <li><a href="#contact" data-toggle="tab"></a></li>
+                    <li><a href="#contactList" data-toggle="tab"></a></li>
+                    <li><a href="#reportList" data-toggle="tab"></a></li>
+                    <li><a href="#reportExpenseByCategory" data-toggle="tab"></a></li>
+                    <li><a href="#reportExpenseByMonth" data-toggle="tab"></a></li>
+                    <li><a href="#reportMonthlyExpenseIncome" data-toggle="tab"></a></li>
+                    <li><a href="#login" data-toggle="tab"></a></li>
+                    <li><a href="#register" data-toggle="tab"></a></li>
+                    <li><a href="#userVerify" data-toggle="tab"></a></li>
+                    <li><a href="#requestPwdReset" data-toggle="tab"></a></li>
+                    <li><a href="#pwdReset" data-toggle="tab"></a></li>
+                    <li><a href="#businessExport" data-toggle="tab"></a></li>
+                    <li><a href="#exportList" data-toggle="tab"></a></li>
+                    <li><a href="#about" data-toggle="tab"></a></li>
+                    <li><a href="#settings" data-toggle="tab"></a></li>
+                    <li><a href="#businessList" data-toggle="tab"></a></li>
+                    <li><a href="#businessUserList" data-toggle="tab"></a></li>
+                    <li><a href="#businessExpenseCategoryList" data-toggle="tab"></a></li>
+                    <li><a href="#businessExpenseCategory" data-toggle="tab"></a></li>
+                    <li><a href="#businessUser" data-toggle="tab"></a></li>
+                    <li><a href="#businessProfile" data-toggle="tab"></a></li>
+                    <li><a href="#upgrade" data-toggle="tab"></a></li>
+                    <li><a href="#externalAttachment" data-toggle="tab"></a></li>
+                    <li><a href="#debug" data-toggle="tab"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="home">
+                    <div class="row">
+                        <div class="home-image"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                          <a href="#v=login" class="btn btn-primary btn-block btn-start">Start Here</a>
+                        </div>           
+                    </div>
+                    <div class="row">
+                        <div class="list-group col-xs-12 feature-list">
+                            <span class="list-group-item"><i class="fa fa-camera fa-fw fa-4x feature-icon"></i><span class="feature-title">Attach Pictures and Files</span><br><span class="feature-short-text">Record business expenses using your mobile devices and camera.</span></span>
+                            <span class="list-group-item"><i class="fa fa-download fa-fw fa-4x feature-icon"></i><span class="feature-title">Export and Archive</span><br><span class="feature-short-text">Export your expenses in Excel or other formats for further processing.</span></span>
+                            <span class="list-group-item"><i class="fa fa-pie-chart fa-fw fa-4x feature-icon"></i><span class="feature-title">Analyses and Reports</span><br><span class="feature-short-text">Analyze and report on business spending with diagrams.</span></span>
+                            <span class="list-group-item"><i class="fa fa-building fa-fw fa-4x feature-icon"></i><span class="feature-title">Easy Management</span><br><span class="feature-short-text">Easy management of multiple businesses and users with fine-grained access control.</span></span>                        
+                        </div>                        
+                    </div>    
+                </div>
+                <div class="tab-pane fade" id="profile">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <form class="form-horizontal form-ezbooks form-profile" onsubmit="return false;">
+                              <div class="panel panel-ezbooks"> 
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Email</label>
+                                    <div class="col-sm-9">
+                                        <p class="form-control-static field-email">&nbsp;</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">First Name</label>
+                                    <div class="col-sm-9">
+                                      <input type="text" class="form-control" name="firstName" placeholder="First Name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Last Name</label>
+                                    <div class="col-sm-9">
+                                      <input type="text" class="form-control" name="lastName" placeholder="Last Name">
+                                    </div>
+                                </div>
+                              </div>
+<!--                               <div class="form-group hidden-xs"> -->
+<!--                                     <div class="col-sm-offset-3 col-sm-4"> -->
+<!--                                       <button id="btn-save-profile" type="button" class="btn btn-primary btn-block">Save</button> -->
+<!--                                     </div> -->
+<!--                                     <div class="col-sm-offset-1 col-sm-4"> -->
+<!--                                       <button id="btn-cancel-profile" type="button" class="btn btn-danger btn-block">Cancel</button> -->
+<!--                                     </div>                                     -->
+<!--                               </div> -->
+                            </form>
+                        </div>
+                    </div>
+                </div>                
+                <div class="tab-pane fade" id="expenseList">
+                     <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                           <!-- 
+                            <div class="row hidden-xs">
+                                Expenses
+                            </div>
+                            -->
+                            <div id="expense-list-container" class="ezbooks-list-container">                
+                                <table id="expense-list" class="ezbooks-list">                
+                                </table>                           
+                                <table id="expense-list-load-more" class="ezbooks-list">
+                                    <tr class="list-load-more list-item-center">
+                                        <td><a href="javascript:void(0)">Load More</a></td>
+                                    </tr>
+                                </table>
+                                <table id="expense-list-end" class="ezbooks-list" style="display:none">
+                                    <tr class="list-item-center">
+                                        <td>End of List</td>
+                                    </tr>
+                                </table>
+                            </div>
+                         </div>  
+                     </div>
+                     <div class="filter-expense-tooltip">
+                        <div class="up-arrow"></div>
+                        <div class="text-tooltip">Filter</div>
+                     </div>                     
+                     <div class="add-expense-tooltip">
+                        <div class="right-arrow"></div>
+                        <div class="text-tooltip">Add Expenses</div>
+                     </div>
+                     <div class="btn-container-add-expense">
+                        <div class="round-button-circle">
+                            <button id="btn-add-expense" class="btn btn-primary round-button">
+                                <i class="fa fa-plus fa-2x"></i>
+                            </button>
+                        </div>
+                     </div>                      
+                </div>
+                <div class="tab-pane fade" id="invoiceList">
+                     <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            <div id="invoice-list-container" class="ezbooks-list-container">                
+                                <table id="invoice-list" class="ezbooks-list">                
+                                </table>
+                                <table id="invoice-list-load-more" class="ezbooks-list">
+                                    <tr class="list-load-more list-item-center">
+                                        <td><a href="javascript:void(0)">Load More</a></td>
+                                    </tr>
+                                </table>
+                                <table id="invoice-list-end" class="ezbooks-list" style="display:none">
+                                    <tr class="list-item-center">
+                                        <td>End of List</td>
+                                    </tr>
+                                </table>
+                            </div>
+                         </div>  
+                     </div>
+                     <!-- 
+                     <div class="filter-expense-tooltip">
+                        <div class="up-arrow"></div>
+                        <div class="text-tooltip">Filter</div>
+                     </div>                     
+                     <div class="add-expense-tooltip">
+                        <div class="right-arrow"></div>
+                        <div class="text-tooltip">Add Expenses</div>
+                     </div>
+                     -->                   
+                </div>
+
+                <div class="tab-pane fade" id="invoicePreview">
+                  <div class="panel panel-ezbooks">
+                      <div class="row">
+                        <div class="col-xs-6">
+                            <div class="invoice-business-logo-tip">[Logo Here]</div>
+                            <img class="invoice-business-logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNgqAcAAIIAgLO2btEAAAAASUVORK5CYII=">
+                            <div class="text-invoice-business-name"></div>
+                            <div class="text-invoice-business-address"></div>
+                            
+                        </div>
+                        <div class="col-xs-6">
+                            <div style="text-align: right" class="text-invoice">INVOICE</div>
+                            <div style="text-align: right" class="text-invoice-number"></div>
+                            <br>
+                            <div style="text-align: right" class="text-invoice-balanceDue">Balance Due</div>
+                            <div style="text-align: right" class="text-invoice-balanceDue-val"></div>
+                        </div>
+                      </div>
+                      <div class="row">&nbsp;</div>
+                      <div class="row">
+                        <div class="col-xs-6">
+                            <div class="text-invoice-billTo">Bill To</div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="text-status">DRAFT</div>
+                        </div>                    
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-6">
+                            <div class="text-invoice-customer-name"></div>
+                            <div class="text-invoice-customer-address"></div>
+                            <div class="text-invoice-customer-phone"></div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div style="text-align:right" class="text-invoice-date">Invoice Date:</div>
+                            <div style="text-align:right" class="text-invoice-dueDate">Due Date:</div>
+                            <div style="text-align:right" class="text-invoice-poNumber">P.O.#:</div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div style="text-align:right" class="text-invoice-date-val"></div>
+                            <div style="text-align:right" class="text-invoice-dueDate-val"></div>
+                            <div style="text-align:right" class="text-invoice-poNumber-val"></div>
+                        </div>
+                      </div>
+                      <br>
+                      <table class="table table-condensed table-items">
+                        <thead>
+                          <tr>
+                            <th class="col-xs-1">#</th>
+                            <th class="col-xs-6">Item</th>
+                            <th class="col-xs-1">Qty</th>
+                            <th class="col-xs-1"><div style="text-align:right">Rate</div></th>
+                            <th class="col-xs-3"><div style="text-align:right">Amount</div></th>
+                          </tr>
+                        </thead>
+                        <tbody class="tbody-invoice-items">
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><div style="text-align:right"></div></td>
+                            <td><div style="text-align:right"></div></td>                       
+                          </tr>                          
+                        </tbody>
+                      </table>
+                      <br>
+                      <div class="row">
+                        <div class="col-xs-8 col-sm-9">
+                            <div style="text-align:right" class="text-invoice-subTotal">Sub Total</div>
+                            <div style="text-align:right" class="text-invoice-tax">Tax</div>
+                            <div style="text-align:right" class="text-invoice-discount"></div>
+                            <div style="text-align:right" class="text-invoice-shipping">Shipping charge</div>
+                            <div style="text-align:right" class="text-invoice-adjustment">Adjustment</div>
+                        </div>
+                        <div class="col-xs-4 col-sm-3">
+                            <div style="text-align:right" class="text-invoice-subTotal-val"></div>
+                            <div style="text-align:right" class="text-invoice-tax-val"></div>
+                            <div style="text-align:right" class="text-invoice-discount-val"></div>
+                            <div style="text-align:right" class="text-invoice-shipping-val"></div>
+                            <div style="text-align:right" class="text-invoice-adjustment-val"></div>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row">
+                        <div class="col-xs-8 col-sm-9">
+                            <div style="text-align:right" class="text-invoice-total">Total</div>
+                        </div>
+                        <div class="col-xs-4 col-sm-3">
+                            <div style="text-align:right" class="text-invoice-total-val"></div>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row">
+                        <div class="col-xs-12">
+                            <div class="text-invoice-note"><b>Notes:</b></div>
+                            <div class="text-invoice-note-val"></div>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row">
+                        <div class="col-xs-12">
+                            <div class="text-invoice-terms"><b>Terms:</b></div>
+                            <div class="text-invoice-terms-val"></div>
+                        </div>
+                      </div> 
+                  </div>
+                  
+                  <div class="panel panel-ezbooks panel-invoice-status-options">
+                        <form class="form-horizontal form-ezbooks form-invoice-status-options">
+                              <div class="form-group">
+                                <div class="col-xs-6" style="padding:0">
+                                    <label class="control-label col-sm-4">From</label>
+                                    <div class="col-sm-8">
+                                        <p class="form-control-static has-tooltip from" data-toggle="tooltip" data-placement="top" title="From email address can be set in business profile (business email)" data-trigger="click"></p>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6" style="padding:0">
+                                    <label class="control-label col-sm-4">To</label>
+                                    <div class="col-sm-8">
+                                        <p class="form-control-static to"></p>
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <div class="col-xs-6" style="padding:0">
+                                    <label class="control-label col-sm-4">Status</label>
+                                    <div class="col-sm-8">
+                                        <p class="form-control-static status"></p>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6" style="padding:0">
+                                    <label class="control-label col-sm-4">CC</label>
+                                    <div class="col-sm-8">
+                                        <p class="form-control-static ccMe-val"></p>
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-sm-2"><span class="hidden-sm">Email </span>Subject</label>
+                                <div class="col-sm-10">
+                                    <p class="form-control-static emailSubject"></p>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-sm-2"><span class="hidden-sm">Email </span>Body</label>
+                                <div class="col-sm-10">
+                                    <p class="form-control-static emailBody"></p>
+                                </div>
+                              </div>
+                          </form>
+                  </div>
+<!--                   <div class="panel panel-ezbooks" style="display:none"> -->
+<!--                     <div class="row"> -->
+<!--                       <div class="form-group"> -->
+<!--                         <div class="col-sm-offset-3 col-sm-3"> -->
+<!--                           <button id="btn-mail-invoice-preview" type="button" class="btn btn-primary btn-block">Send</button> -->
+<!--                         </div> -->
+<!--                         <div class="col-sm-3"> -->
+<!--                           <button id="btn-edit-invoice-preview" type="button" class="btn btn-primary btn-block">Edit</button> -->
+<!--                         </div> -->
+<!--                         <div class="col-sm-3"> -->
+<!--                           <button id="btn-cancel-invoice-preview" type="button" class="btn btn-warning btn-block">Back</button> -->
+<!--                         </div> -->
+<!--                       </div> -->
+<!--                     </div> -->
+<!--                   </div> -->
+                </div>
+                    
+                <div class="tab-pane fade" id="invoice">
+                  <div class="row">
+                    <div class="col-xs-12">
+                        <form class="form-horizontal form-ezbooks form-invoice">
+                          <div class="panel panel-ezbooks">
+                              <div class="form-group">
+                                <input type="hidden" name="id:number">
+                                <input type="hidden" name="temporary:boolean" value="true">
+                                <input type="hidden" name="businessId:number">
+                                <input type="hidden" name="customer[id]:number">
+                                <label class="control-label col-sm-3 mandatory">Customer</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="customer[name]">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-sm-3">Email</label>
+                                <div class="col-sm-9">
+                                    <input type="email" class="form-control" name="customer[email]">
+                                </div>
+                              </div>
+                              <div id="invoice-details1" class="collapse">
+                                  <div class="form-group">
+                                    <label class="control-label col-sm-3">Phone</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="customer[phone]">
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label class="control-label col-sm-3">Address</label>
+                                    <div class="col-sm-9">
+                                        <textarea class="form-control" name="customer[address]" rows="2"></textarea>
+                                    </div>
+                                  </div>
+                              </div>
+                              <div style="text-align: right">
+                                <a href="javascript:void(0)" class="fa fa-sort fa-2x" data-toggle="collapse" data-target="#invoice-details1"></a>
+                              </div>                             
+                          </div>     
+                          <div class="panel panel-ezbooks">
+                              <div class="form-group">
+                                <div class="col-xs-6" style="padding:0">
+                                    <label class="control-label col-sm-6">Status</label>
+                                    <div class="col-sm-6">
+                                        <select class="form-control" name="statusId:number" placeholder="Invoice Status">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 paymentDate" style="padding:0">
+                                    <label class="control-label col-sm-6 mandatory" style="padding-right: 0px">Payment Date</label>
+                                    <div class="col-sm-6">
+                                        <input type="date" class="form-control" name="paymentDate">
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <div class="col-xs-6" style="padding:0">
+                                    <label class="control-label col-sm-6 mandatory">Invoice #</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" name="number" placeholder="Invoice Number">
+                                    </div>
+                                </div>
+                                <div class="col-xs-6" style="padding:0">
+                                    <label class="control-label col-sm-6">P.O. #</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" name="poNumber">
+                                    </div>
+                                </div>
+                              </div>                  
+                              <div class="form-group">
+                                <div class="col-xs-6" style="padding:0">
+                                    <label class="control-label col-sm-6">Invoice Date</label>
+                                    <div class="col-sm-6">
+                                        <input type="date" class="form-control" name="date">
+                                    </div>
+                                </div>
+                                <div class="col-xs-6" style="padding:0">
+                                    <label class="control-label col-sm-6">Due Date</label>
+                                    <div class="col-sm-6">
+                                        <input type="date" class="form-control" name="dueDate">
+                                    </div>
+                                </div>
+                              </div>
+<!--                               <div class="form-group"> -->
+<!--                                 <label class="control-label col-sm-3">Terms</label> -->
+<!--                                 <div class="col-sm-9"> -->
+<!--                                     <select class="form-control" name="dueTerms"> -->
+<!--                                     </select> -->
+<!--                                 </div> -->
+<!--                               </div>                                -->
+                          </div>                          
+                          <div class="panel panel-ezbooks">
+                              <div class="form-group">
+                                <label class="control-label col-sm-3">Items</label>
+                                <div class="col-sm-9 invoice-items">
+                                </div>
+                              </div>                          
+                          </div>
+                          
+                          <div class="panel panel-ezbooks">
+                              <div class="form-group">
+                                <div class="col-xs-6" style="padding:0">
+                                    <label class="control-label col-sm-6" style="padding-right: 0px">Discount (%)</label>
+                                    <div class="col-sm-6">
+                                        <input type="number" class="form-control" name="discount:number">
+                                    </div>
+                                </div>
+                                <div class="col-xs-6" style="padding:0">
+                                    <label class="control-label col-sm-6">Adjustment (<span class="currency-symbol">$</span>)</label>
+                                    <div class="col-sm-6">
+                                        <input type="number" class="form-control" name="adjustment:number">
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-sm-3">Shipping Charges (<span class="currency-symbol">$</span>)</label>
+                                <div class="col-sm-9">
+                                    <input type="number" class="form-control" name="shipping:number" placeholder="Shipping Cost">
+                                </div>
+                              </div>  
+                          </div>
+                          <div class="panel panel-ezbooks">
+                              <div class="form-group">
+                                <label class="control-label col-sm-3">Customer Notes</label>
+                                <div class="col-sm-9">
+                                    <textarea class="form-control" name="customerNote" rows="1" placeholder="Will be displayed on customer's invoice."></textarea>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-sm-3">Terms &amp; Conditions</label>
+                                <div class="col-sm-9">
+                                    <textarea class="form-control" name="terms" rows="1"></textarea>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-sm-3">Notes</label>
+                                <div class="col-sm-9">
+                                    <textarea class="form-control" name="note" rows="1" placeholder="Will not be displayed on customer's invoice."></textarea>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="panel panel-ezbooks">
+                              <div class="form-group">
+                                <label class="control-label col-sm-3"><span class="hidden-sm">Email </span>Subject</label>
+                                <div class="col-sm-9">
+                                    <input class="form-control" name="emailSubject"></input>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-sm-3"><span class="hidden-sm">Email </span>Body</label>
+                                <div class="col-sm-9">
+                                    <textarea class="form-control" name="emailBody" rows="2"></textarea>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-xs-5 col-sm-3">Copy Myself</label>
+                                <div class="col-xs-7 col-sm-9">
+                                    <input type="checkbox" name="ccMe:boolean" class="big-checkbox"></input>
+                                </div>
+                              </div>
+                          </div>
+<!--                           <div class="panel panel-ezbooks"> -->
+<!--                               <div class="form-group hidden-xs"> -->
+<!--                                 <div class="col-sm-offset-3 col-sm-3"> -->
+<!--                                   <button id="btn-save-invoice" type="button" class="btn btn-primary btn-block">Save</button> -->
+<!--                                 </div> -->
+<!--                                 <div class="col-sm-3"> -->
+<!--                                   <button id="btn-cancel-invoice" type="button" class="btn btn-success btn-block">Cancel</button> -->
+<!--                                 </div>              -->
+<!--                                 <div class="col-sm-3"> -->
+<!--                                   <button id="btn-delete-invoice" type="button" class="btn btn-danger btn-block">Delete</button> -->
+<!--                                 </div>                         -->
+<!--                               </div> -->
+<!--                               <div class="form-group"> -->
+<!--                                 <div class="col-sm-offset-3 col-sm-3 col-xs-6"> -->
+<!--                                   <button id="btn-preview-invoice" type="button" class="btn btn-primary btn-block">Preview / Mail</button> -->
+<!--                                 </div> -->
+<!--                                 <div class="col-sm-3 col-xs-6"> -->
+<!--                                   <button id="btn-duplicate-invoice" type="button" class="btn btn-success btn-block">Duplicate</button> -->
+<!--                                 </div> -->
+<!--                               </div> -->
+<!--                           </div> -->
+                          <div class="panel panel-ezbooks"> 
+                              <div class="form-group">
+                                <label class="control-label col-sm-3" for="metadata">META DATA</label>
+                                <div class="col-sm-9 metadata-invoice">
+                                    ID: #<br>
+                                    Last Modified On: <br>
+                                    Last Modified By: <br>
+                                    Created On: <br>
+                                    Created By: <br>
+                                </div>
+                              </div>
+                          </div>                         
+                        </form>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="tab-pane fade" id="invoiceItem">
+                  <div class="row">
+                    <div class="col-xs-12">
+                        <form class="form-horizontal form-ezbooks form-invoice-item">
+                            <div class="panel panel-ezbooks">
+                              <input type="hidden" name="id:number" value="0">
+                              <input type="hidden" name="invoiceId:number" value="0">
+                              <div class="form-group">
+                                <label class="control-label col-sm-3">Name</label>
+                                <div class="col-sm-9">
+                                    <input class="form-control" type="text" name="name">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-sm-3">Description</label>
+                                <div class="col-sm-9">
+                                    <textarea class="form-control" name="description" rows="2"></textarea>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <div class="col-xs-6" style="padding:0">
+                                    <label class="control-label col-sm-6">Quatity</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control" type="number" name="quatity:number">
+                                    </div>
+                                </div>
+                                <div class="col-xs-6" style="padding:0">
+                                    <label class="control-label col-sm-6">Rate</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control" type="number" name="rate:number">
+                                    </div>
+                                </div>
+                              </div>
+                               <div class="form-group">
+                                <div class="col-xs-6 col-xs-offset-6" style="padding:0">
+                                    <label class="control-label col-sm-6">Tax (%)</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control" type="number" name="tax:number">
+                                    </div>
+                                </div>
+                              </div>
+                            </div>               
+                        </form>                    
+                    </div>
+                  </div>
+<!--                   <div class="row hidden-xs"> -->
+<!--                         <div class="col-xs-3 col-xs-offset-3"> -->
+<!--                             <button id="btn-invoice-item-ok" type="button" class="btn btn-block btn-primary" data-dismiss="modal">Ok</button> -->
+<!--                         </div>             -->
+<!--                         <div class="col-xs-3"> -->
+<!--                             <button id="btn-invoice-item-cancel" type="button" class="btn btn-block btn-success" data-dismiss="modal">Cancel</button> -->
+<!--                         </div> -->
+<!--                         <div class="col-xs-3"> -->
+<!--                             <button id="btn-invoice-item-delete" type="button" class="btn btn-block btn-danger" data-dismiss="modal">Delete</button> -->
+<!--                         </div> -->
+<!--                   </div>                  -->
+                </div>
+                <div class="tab-pane fade" id="bankingList">
+                     <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            <div id="banking-list-container" class="ezbooks-list-container">                
+                                <table id="banking-list" class="ezbooks-list">                
+                                </table>
+                                <table id="banking-list-load-more" class="ezbooks-list">
+                                    <tr class="list-load-more list-item-center">
+                                        <td><a href="javascript:void(0)">Load More</a></td>
+                                    </tr>
+                                </table>
+                                <table id="banking-list-end" class="ezbooks-list" style="display:none">
+                                    <tr class="list-item-center">
+                                        <td>End of List</td>
+                                    </tr>
+                                </table>
+                            </div>
+                         </div>  
+                     </div>                
+                </div>
+                <div class="tab-pane fade" id="documentsList">
+                     <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            <div id="documents-list-container" class="ezbooks-list-container">                
+                                <table id="documents-list" class="ezbooks-list">                
+                                </table>
+                                <table id="documents-list-load-more" class="ezbooks-list">
+                                    <tr class="list-load-more list-item-center">
+                                        <td><a href="javascript:void(0)">Load More</a></td>
+                                    </tr>
+                                </table>
+                                <table id="documents-list-end" class="ezbooks-list" style="display:none">
+                                    <tr class="list-item-center">
+                                        <td>End of List</td>
+                                    </tr>
+                                </table>
+                            </div>
+                         </div>  
+                     </div>                
+                </div>                                             
+                <div class="tab-pane fade" id="expense">
+                 <div class="row">
+                    <div class="col-xs-12">
+                        <!-- Use custom data-hide to hide the alert instead of removing it from DOM -->
+                        <div class="alert alert-dismissible alert-warning warning-duplicate">
+                          <button type="button" class="close" data-hide="warning-duplicate">&times;</button>
+                          <h4><i class="fa fa-exclamation-triangle"></i></h4>
+                          <p>A possible <a href="javascript:void(0)" class="link-duplicate">duplicated expense item</a> is detected. <a href="javascript:void(0)" data-hide="warning-duplicate">Dismiss this warning</a> and save this item if you are sure this is not a duplicate.</p>
+                        </div>
+                        <form class="form-horizontal form-ezbooks form-expense">
+                          <div class="panel panel-ezbooks">
+                              <div class="form-group" style="margin-bottom:0">
+                                <input type="hidden" name="duplicateId:number">
+                                <input type="hidden" name="id:number">
+                                <input type="hidden" name="temporary:boolean" value="true">
+                                <input type="hidden" name="businessId:number">
+                                <label class="control-label col-sm-3"><span>Receipts</span><span class="help-text">(hold to delete)</span></label>
+                                <div class="col-sm-9">
+                                  <span class="photo-container"></span>
+                                  <button id="btn-expense-take-photo" type="button" class="btn btn-primary btn-take-photo"><i class="fa fa-camera"></i></button>
+                                  <button id="btn-expense-choose-gallery" type="button" class="btn btn-primary btn-choose-gallery"><i class="fa fa-file-image-o"></i></button>
+                                  <div id="btn-expense-choose-file" type="button" class="btn btn-primary btn-choose-file">
+                                    <i class="fa fa-paperclip"></i>
+                                    <input type="file" name="files" multiple>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group attachment-hint">
+                                <label class="control-label col-sm-3"></label>
+                                <div class="col-sm-9" style="text-align: right">
+                                    <a href="#v=externalAttachment"><i class="fa fa-fw fa-file-pdf-o"></i><i class="fa fa-fw fa-file-word-o"></i><i class="fa fa-fw fa-file-excel-o"></i><i class="fa fa-fw fa-dropbox"></i><i class="fa fa-fw fa-inbox"></i></a>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="panel panel-ezbooks">
+                              <div class="form-group">
+                                <label class="control-label col-sm-3">Name</label>
+                                <div class="col-sm-9">
+                                  <input type="text" class="form-control" name="name" placeholder="Enter Name">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-sm-3">Date</label>
+                                <div class="col-sm-9">
+                                  <input type="date" class="form-control" name="date" placeholder="Enter Date (YYYY-MM-DD)">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-sm-3">Category</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control" name="categoryId:number" placeholder="Select Catetory">
+                                    </select>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <div class="col-xs-8 col-sm-6 col-md-9" style="padding:0">
+                                    <label class="control-label col-sm-6 col-md-4">Total (<span class="currency-symbol">$</span>)</label>
+                                    <div class="col-sm-6 col-md-8">
+                                      <input type="number" class="form-control" name="total:number" placeholder="0.00">
+                                    </div>
+                                </div>
+                                <div class="col-xs-4 col-sm-6 col-md-3" style="padding:0">
+                                    <label class="control-label col-sm-6 col-md-5">Tax (<span class="currency-symbol">$</span>)</label>
+                                    <div class="col-sm-6 col-md-7">
+                                      <input type="number" class="form-control" name="tax:number" placeholder="0.00">
+                                    </div>
+                                </div>
+                              </div>                       
+                              <div class="form-group">
+                                <label class="control-label col-sm-3" for="note">Note</label>
+                                <div class="col-sm-9">
+                                  <textarea class="form-control" name="note" placeholder="Enter note (searchable)"></textarea>
+                                </div>
+                              </div>
+                          </div>
+                          <fieldset style="display:none">
+                              <legend>+</legend>
+                              <div class="form-group">
+                                <label class="control-label col-sm-3">Account</label>
+                                <div class="col-sm-9">
+                                    <input type="number" class="form-control" name="accountId:number">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-sm-3">Private</label>
+                                <div class="col-sm-9">
+                                    <input type="checkbox" class="" name="private">
+                                </div>
+                              </div>   
+                          </fieldset>
+<!--                           <div class="panel panel-ezbooks hidden-xs">                   -->
+<!--                               <div class="form-group"> -->
+<!--                                 <div class="col-sm-offset-3 col-sm-3"> -->
+<!--                                   <button id="btn-save-expense" type="button" class="btn btn-primary btn-block">Save</button> -->
+<!--                                 </div> -->
+<!--                                 <div class="col-sm-3"> -->
+<!--                                   <button id="btn-cancel-expense" type="button" class="btn btn-success btn-block">Cancel</button> -->
+<!--                                 </div>              -->
+<!--                                 <div class="col-sm-3"> -->
+<!--                                   <button id="btn-delete-expense" type="button" class="btn btn-danger btn-block">Delete</button> -->
+<!--                                 </div>                         -->
+<!--                               </div> -->
+<!--                           </div> -->
+                        </form>
+                        
+                        <form class="form-horizontal metadata-expense">
+                          <div class="panel panel-ezbooks"> 
+                              <div class="form-group">
+                                <label class="control-label col-sm-3" for="metadata">META DATA</label>
+                                <div class="col-sm-9 metadata">
+                                    ID: #<br>
+                                    Last Modified On: <br>
+                                    Last Modified By: <br>
+                                    Created On: <br>
+                                    Created By: <br>
+                                </div>
+                              </div>
+                          </div>
+                        </form>
+                    </div>
+                 </div>                
+                </div>                
+                <div class="tab-pane fade" id="reportList">
+                    <br>                 
+                    <div class="list-group col-md-10 col-md-offset-1 list-report">
+                        <div class="list-group-item active">Expense Reports</div>
+                        <a href="#v=reportExpenseByCategory" class="list-group-item">
+                            <span class="list-group-item-text">Expenses By Category</span>
+                        </a>
+                        <a href="#v=reportExpenseByMonth" class="list-group-item">
+                            <span class="list-group-item-text">Expenses By Month</span>
+                        </a>
+                    </div>
+                   
+                    
+<!--                     <div class="list-group col-md-10 col-md-offset-1 list-report"> -->
+<!--                         <div class="list-group-item active">Financial Reports</div> -->
+<!--                          <a href="#v=reportBalanceSheet" class="list-group-item"> -->
+<!--                         <a href="javascript:void(0)" class="list-group-item"> -->
+<!--                             <span class="list-group-item-text">Balance Sheet</span> -->
+<!--                         </a> -->
+<!--                     </div>                                          -->
+                    <div class="list-group col-md-10 col-md-offset-1 list-report">
+                        <div class="list-group-item active">Expenses &amp; Incomes</div>
+                        <a href="#v=reportMonthlyExpenseIncome" class="list-group-item">
+                            <span class="list-group-item-text">Monthly Expense &amp; Income</span>
+                        </a>
+                    </div>                                         
+                </div>
+                <div class="tab-pane fade" id="reportExpenseByCategory">
+                     <div class="panel panel-ezbooks"> 
+                     <div class="row">
+                        <div class="col-md-10 col-md-offset-1 ezbooks-title business-name">Business Name</div>
+                     </div>
+                     <div class="row">
+                        <div class="col-md-10 col-md-offset-1">Expenses By Category</div>
+                     </div>
+                     <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            <form class="form-horizontal form-reportExpenseByCategory">
+                              <div class="form-group">
+                                <div class="col-xs-6" style="padding:0">
+                                    <label class="control-label col-sm-5" style="text-align:left">Start Date</label>
+                                    <div class="col-sm-7"> 
+                                      <input type="date" name="startDate" class="form-control" placeholder="YYYY-MM-DD">
+                                    </div>
+                                </div>
+                                <div class="col-xs-6" style="padding:0">
+                                    <label class="control-label col-sm-5">End Date</label>
+                                    <div class="col-sm-7"> 
+                                      <input type="date" name="endDate" class="form-control" placeholder="YYYY-MM-DD">
+                                    </div>
+                                </div>
+                              </div>
+                            </form>
+                        </div>
+                     </div>
+                     </div>
+                     <div class="panel panel-ezbooks"> 
+                         <div class="row">
+                            <div class="col-md-10 col-md-offset-1">
+                                <canvas id="chartExpenseByCategory"></canvas>
+                            </div>
+                         </div>
+                     </div>
+                     <div class="panel panel-ezbooks"> 
+                         <div class="row">
+                            <div class="col-md-10 col-md-offset-1">
+                                <table id="tbl-reportExpenseByCategory" class="table table-striped table-hover"> 
+                                    <thead>
+                                      <tr>
+                                        <th class="col-xs-7 col-sm-5">Category</th>
+                                        <th class="hidden-xs col-xs-2 col-sm-2">Tax</th>
+                                        <th class="col-xs-3 col-sm-3">Sub Total</th>
+                                        <th class="col-sm-2">%</th>
+                                      </tr>                                  
+                                    </thead>
+                                    <tfoot>
+                                      <tr>
+                                        <th class="col-xs-7 col-sm-5">Total</th>
+                                        <th class="hidden-xs col-xs-2 col-sm-2 total-tax"></th>
+                                        <th class="col-xs-3 col-sm-3 total"></th>
+                                        <th class="col-sm-2 total-percent">100%</th>
+                                      </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    </tbody>            
+                                </table>
+                             </div>  
+                         </div>
+                     </div>        
+                </div>
+                <div class="tab-pane fade" id="reportExpenseByMonth">
+                     <div class="panel panel-ezbooks"> 
+                         <div class="row">
+                            <div class="col-md-10 col-md-offset-1 ezbooks-title business-name">Business Name</div>
+                         </div>
+                         <div class="row">
+                            <div class="col-md-10 col-md-offset-1">Expenses By Month</div>
+                         </div>
+                         <div class="row">
+                            <div class="col-md-10 col-md-offset-1">
+                                <form class="form-horizontal form-reportExpenseByMonth">
+                                  <div class="form-group">
+                                    <div class="col-xs-6" style="padding:0">
+                                        <label class="control-label col-sm-5" style="text-align:left">Start Date</label>
+                                        <div class="col-sm-7"> 
+                                          <input type="month" name="startDate" class="form-control" placeholder="YYYY-MM">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6" style="padding:0">
+                                        <label class="control-label col-sm-5">End Date</label>
+                                        <div class="col-sm-7"> 
+                                          <input type="month" name="endDate" class="form-control" placeholder="YYYY-MM">
+                                        </div>
+                                    </div>
+                                  </div>
+                                </form>
+                            </div>
+                         </div>
+                     </div>
+                     <div class="panel panel-ezbooks"> 
+                         <div class="row">
+                            <div class="col-md-10 col-md-offset-1">
+                                <canvas id="chartExpenseByMonth"></canvas>
+                            </div>
+                         </div>
+                     </div>
+                     <div class="panel panel-ezbooks"> 
+                         <div class="row">
+                            <div class="col-md-10 col-md-offset-1">
+                                <table id="tbl-reportExpenseByMonth" class="table table-striped table-hover"> 
+                                    <thead>
+                                      <tr>
+                                        <th class="col-xs-3 col-sm-5">Month</th>
+                                        <th class="col-xs-3 col-sm-2">Tax</th>
+                                        <th class="col-xs-4 col-sm-3">Sub Total</th>
+                                        <th class="col-sm-2">%</th>
+                                      </tr>                                  
+                                    </thead>
+                                    <tfoot>
+                                      <tr>
+                                        <th class="col-xs-3 col-sm-5">Total</th>
+                                        <th class="col-xs-3 col-sm-2 total-tax"></th>
+                                        <th class="col-xs-4 col-sm-3 total"></th>
+                                        <th class="col-sm-2 total-percent">100%</th>
+                                      </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    </tbody>            
+                                </table>
+                             </div>  
+                         </div>
+                     </div>        
+                </div>
+                <div class="tab-pane fade" id="reportMonthlyExpenseIncome">
+                     <div class="panel panel-ezbooks"> 
+                         <div class="row">
+                            <div class="col-md-10 col-md-offset-1 ezbooks-title business-name">Business Name</div>
+                         </div>
+                         <div class="row">
+                            <div class="col-md-10 col-md-offset-1" style="height:40px">Monthly Expense and Income</div><br>
+                         </div>
+                         <div class="row">
+                            <div class="col-md-10 col-md-offset-1">
+                                <form class="form-horizontal form-reportMonthlyExpenseIncome">
+                                  <div class="form-group">
+                                    <div class="col-xs-6" style="padding:0">
+                                        <label class="control-label col-sm-5" style="text-align:left">Start Date</label>
+                                        <div class="col-sm-7"> 
+                                          <input type="month" name="startDate" class="form-control" placeholder="YYYY-MM">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6" style="padding:0">
+                                        <label class="control-label col-sm-5">End Date</label>
+                                        <div class="col-sm-7"> 
+                                          <input type="month" name="endDate" class="form-control" placeholder="YYYY-MM">
+                                        </div>
+                                    </div>
+                                  </div>
+                                </form>
+                            </div>
+                         </div>
+                     </div>
+                     <div class="panel panel-ezbooks"> 
+                         <div class="row">
+                            <div class="col-md-10 col-md-offset-1">
+                                <canvas id="chartMonthlyExpenseIncome"></canvas>
+                            </div>
+                         </div>
+                     </div>
+                     <div class="panel panel-ezbooks"> 
+                         <div class="row">
+                            <div class="col-md-10 col-md-offset-1">
+                                <table id="tbl-reportMonthlyExpenseIncome" class="table table-striped table-hover"> 
+                                    <thead>
+                                      <tr>
+                                        <th class="col-xs-4">Month</th>
+                                        <th class="col-xs-4">Expense</th>
+                                        <th class="col-xs-4">Income</th>
+                                      </tr>                                  
+                                    </thead>
+                                    <tfoot>
+                                      <tr>
+                                        <th class="col-xs-4">Total</th>
+                                        <th class="col-xs-4 total-expense"></th>
+                                        <th class="col-xs-4 total-income"></th>
+                                      </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    </tbody>            
+                                </table>
+                             </div>  
+                         </div>
+                     </div>        
+                </div>
+                <div class="tab-pane fade" id="banking">
+                    <div class="row">
+                    <h1>Banking</h1>
+                    </div>
+                </div>
+                <!-- Export Tab -->
+                <div class="tab-pane fade" id="businessExport">
+                    <div class="row">
+                        <div class="col-xs-12 hidden-xs ezbooks-title">
+                            Export Business
+                        </div>
+                        <div class="col-xs-12 export-success" style="display:none">
+                            <br class="visible-xs">
+                            <div class="alert alert-success">
+                                Your request is queued and being processed. You will receive an email containing the download link once the process is completed.
+                            </div>
+                        </div>
+                        <div class="col-xs-12 export-quota-limit" style="display:none">
+                            <br class="visible-xs">
+                            <div class="alert alert-danger">
+                                Your are limited to have 3 exports every 24 hours. 
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <form class="form-horizontal form-ezbooks form-export" onsubmit="return false;">
+                              <div class="panel panel-ezbooks"> 
+                                  <div class="form-group">
+                                    <label class="control-label col-sm-4" for="date">Business</label>
+                                    <div class="col-sm-8">
+                                      <select class="form-control select-business" name="businessId:number" placeholder="Select Business" required></select>
+                                      <div class="help-block with-errors"></div>
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label class="control-label col-sm-4">From Date</label>
+                                    <div class="col-sm-8">
+                                      <input type="date" class="form-control" name="startDate" required>
+                                      <div class="help-block with-errors"></div>
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label class="control-label col-sm-4">To Date</label>
+                                    <div class="col-sm-8">
+                                      <input type="date" class="form-control" name="endDate" required>
+                                      <div class="help-block with-errors"></div>
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label class="control-label col-xs-8 col-sm-4" for="startDate">Include Attachments</label>
+                                    <div class="col-xs-4 col-sm-8">
+                                      <input type="checkbox" class="checkbox-include-photos big-checkbox" name="includePhotos">
+<!--                                       <input type="checkbox" class="checkbox-include-photos" name="includePhotos"> -->
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                <div class="col-xs-12">
+                                    <b>Note:</b> Your export will be available for download for 5 days after the request. <!--To view or download your previous exports, <a href="#v=exportList">click here.</a>-->
+                                </div>
+<!--                                 <div class="col-sm-offset-3 col-sm-9"> -->
+<!--                                   <button id="btn-export" type="submit" class="btn btn-lg btn-primary btn-block">Export</button> -->
+<!--                                   Note: Your export will be available for download for 5 days after the request.  -->
+<!--                                 </div> -->
+                              </div>
+                            </form>
+                        </div>
+                    </div>   
+                </div>
+                <!-- Export Tab -->
+                <div class="tab-pane fade" id="exportList">
+                    <br class="visible-xs">
+                    <div class="row">
+                        <div class="panel-group col-xs-12" role="tablist">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="exportlist-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" href="#exportlist-panel-body" aria-expanded="false"
+                                            aria-controls="exportlist-panel-body"> Previous Exports </a>
+                                    </h4>
+                                </div>
+                                <div id="exportlist-panel-body" class="panel-collapse collapse" role="tabpanel"
+                                    aria-labelledby="exportlist-heading" aria-expanded="false">
+                                    <ul id="exportlist-group" class="list-group">
+                                        <li class="list-group-item">Bootply</li>
+                                        <li class="list-group-item">One itmus ac facilin</li>
+                                        <li class="list-group-item">Second eros</li>
+                                    </ul>
+                                    <!--<div class="panel-footer">Footer</div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+                <!-- End of Export Tab -->
+                <!-- Login Tab -->                                        
+                <div class="tab-pane fade" id="login">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h2>Please Sign In</h2>
+                            <hr class="colorgraph">
+                        </div>
+                    </div>
+                    <div class="row social-login">                 
+                        <div class="col-xs-4">
+                            <a href="#" class="btn btn btn-block btn-facebook" disabled="disabled">
+                                <i class="fa fa-facebook visible-xs"></i>
+                                <span class="hidden-xs">Facebook</span>
+                            </a>
+                        </div>
+                        <div class="col-xs-4">
+                            <a href="#" class="btn btn btn-block btn-twitter" disabled="disabled">
+                                <i class="fa fa-twitter visible-xs"></i>
+                                <span class="hidden-xs">Twitter</span>
+                            </a>
+                        </div>  
+                        <div class="col-xs-4">
+                            <a href="#" class="btn btn btn-block btn-google" disabled="disabled">
+                                <i class="fa fa-google-plus visible-xs"></i>
+                                <span class="hidden-xs">Google+</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row or">
+                        <div class="col-xs-12">
+                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                <hr class="or">
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 or-text">
+                                OR
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                <hr class="or">
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <form class="form-horizontal form-signin" onsubmit="return false;">
+                              <div class="panel" style="padding:10px 10px 0 0"> 
+                                <input type="hidden" name="device">
+                                <input type="hidden" name="model">
+                                <input type="hidden" name="cordova"> 
+                                <input type="hidden" name="platform"> 
+                                <input type="hidden" name="uuid"> 
+                                <input type="hidden" name="version">
+                                <input type="hidden" name="appVersion">
+                                <input type="hidden" name="name">
+                                
+                                <div class="input-group">
+                                    <span class="input-group-addon email-icon"><i class="glyphicon glyphicon-user"></i></span> 
+                                    <input type="email" name="username" class="form-control email"
+                                       placeholder="Email address" required value="">
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-addon password-icon"><i class="glyphicon glyphicon-lock"></i></span>
+                                    <input type="password" name="password" class="form-control password" placeholder="Password" required value=""> 
+                                </div>
+                                <div class="row" style="margin:0">
+                                    <div class="col-xs-6 container-remember-me ezbook-small-text">
+                                            <input class="checkbox-remember" type="checkbox" name="checkboxRemember"><span class="remeber-me">Remember me</span>
+                                    </div>
+                                    <div class="col-xs-6 container-forgot-password ezbook-small-text">
+                                            <span class="forgot-password"><a href="#v=requestPwdReset">Forgot Password?</a></span>
+                                    </div>
+                                </div>
+                              </div>
+                              <button id="login-btn" type="button" class="btn btn btn-primary btn-block">Sign in</button>
+                              <div class="ezbook-text" style="border-top: 1px solid #888; margin-top: 15px;">
+                                  Don't have an account! <a href="#v=register">Sign Up Here</a>
+                              </div>
+                            </form>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                </div>
+                <div class="tab-pane fade" id="register">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h2>Please Sign Up</h2>
+                            <hr class="colorgraph">
+                        </div>
+                    </div>                
+                    <div class="row">
+                        <div class="col-xs-12 registration-success" style="display:none">
+                            <div class="alert alert-success" role="alert">
+                                <a href="#v=userVerify">An activation email has been sent to your email: <span class="text-user-email"></span>,  click here to enter the activation code.</a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 registration-failure" style="display:block">
+                            <div class="alert alert-danger" role="alert">
+                                There was an error registering your account, please try again.
+                            </div>
+                        </div>
+                        <div class="col-xs-12">                
+                            <form class="form-horizontal form-ezbooks form-register" onsubmit="return false;">
+                              <div class="panel panel-ezbooks"> 
+                                <div class="form-group">
+                                    <div class="col-xs-12">
+                                    <input name="email" type="email" class="form-control" placeholder="Email address*" required autofocus>
+                                    <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>   
+                                <div class="form-group">
+                                    <div class="col-xs-12 col-sm-6">
+                                        <input id="register-password" name="password" type="password" class="form-control" placeholder="Password*" required>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6">
+                                        <input name="password2" type="password" class="form-control" data-match="#register-password" placeholder="Confirm Password*" required>
+                                        <div class="help-block with-errors"></div>
+                                    </div>                                    
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-xs-12 col-sm-6">
+                                        <input name="firstname" type="text" class="form-control" placeholder="First Name">
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6">
+                                        <input name="lastname" type="text" class="form-control" placeholder="Last Name">
+                                    </div>
+                                </div>
+                              </div>
+                                <div class="form-group">
+                                    <div class="col-xs-12">                 
+                                        <button id="btn-register" class="btn btn-lg btn-primary btn-block btn-register" type="submit">Register</button>
+                                    </div>
+                                </div>
+                                    <div class="ezbook-large-text" style="border-top: 1px solid #888; margin-top: 15px;">
+                                        Already have an account! <a href="#v=login">Log In Here</a>
+                                    </div>
+                            </form>
+                        </div>
+                    </div>                            
+                </div>
+                <div class="tab-pane fade" id="userVerify">
+                    <div class="row">
+                        <div class="col-xs-12 hidden-xs ezbooks-title">
+                            Account Activation
+                        </div>
+                        <br class="visible-xs">
+                        <div class="col-xs-12 userverify-info">
+                            <div class="alert alert-info">
+                            If you have not received the activation code in 1 hour, you can click the 'resent' button below to resend the activation code. Make sure you used a valid email for registration and check your 'spam' folder.
+                            </div>                           
+                        </div>
+                        <div class="col-xs-12 resend-activation-success" style="display: none">
+                            <div class="alert alert-success">
+                                An activation email has been sent to your email: <span class="text-user-email"></span>
+                            </div>
+                        </div>      
+                        <div class="col-xs-12 verification-error" style="display: none">
+                            <div class="alert alert-danger">
+                            Account activation failed. Please re-enter the activation code. If you didn't receive the activation code, click the 'Resend Activation Code' button below.
+                            </div>
+                        </div>
+                        <div class="col-xs-12 verification-email-failure" style="display:none">
+                            <div class="alert alert-danger">
+                            We failed to send the activation code to your email: <span class="text-user-email"></span>. A valid email address is required for registration and access to your data. 
+                            </div>
+                        </div>                                              
+                        <form class="form-horizontal form-user-verification" onsubmit="return false;">
+                            <div class="col-xs-12">  
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="code">Activation Code</label>
+                                <div class="col-sm-10">
+                                    <input name="activationCode" type="number" class="form-control" placeholder="Activation Code" required autofocus>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="col-xs-12">  
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-5">        
+                                    <button id="btn-activation" class="btn btn-lg btn-primary btn-block btn-activation" type="submit">Activate <span class="hidden-xs">My Account</span></button>
+                                </div>
+                                <br class="visible-xs">
+                                <div class="col-sm-5">        
+                                    <button id="btn-resend-activation" class="btn btn-lg btn-primary btn-block" type="button">Resend <span class="hidden-xs">Activation Code</span></button>
+                                </div>                                    
+                            </div>
+                            </div>                                       
+                        </form>                    
+                    </div> 
+                </div>    
+                <div class="tab-pane fade" id="requestPwdReset">
+                    <div class="row">
+                        <div class="col-xs-12 hidden-xs ezbooks-title">
+                            Request Password Reset
+                        </div>
+                        <div class="col-xs-12">
+                            <br class="visible-xs">
+                            <div class="alert alert-info request-pwd-reset-instruction">
+                                Please enter your registered email address and click on 'Send Request'. A temporarily password will be emailed to you. Follow the instructions in the email to finish the reset process.
+                            </div>
+                            <div class="alert alert-success request-pwd-reset-success">
+                                <a href="#v=login">The Request has been successfully sent. Please check your email and log in with your temporarily password. Click here to go back to login.</a>
+                            </div>
+                            <form class="form-horizontal form-request-pwd-reset form-ezbooks" onsubmit="return false;">
+                              <div class="panel panel-ezbooks"> 
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Email</label>
+                                    <div class="col-sm-9">
+                                      <input type="email" class="form-control" name="email" required autofocus>
+                                      <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Enter Code</label>
+                                    <div class="col-sm-9">
+                                        <img class="captcha">
+                                        <input type="text" class="form-control" name="captcha" required>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-sm-3"></label>
+                                <div class="col-sm-9">
+                                    <button id="btn-request-pwd-reset" class="btn btn-lg btn-primary btn-block" type="submit">Send Request</button>
+                                </div>
+                              </div>                                
+                            </form>
+                        </div>
+                    </div>
+                </div>                
+                <div class="tab-pane fade" id="pwdReset">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="alert alert-success pwd-reset-success" style="margin-top:15px">
+                                Your password has been changed successfully!
+                            </div>
+                            <form class="form-horizontal form-ezbooks form-pwd-reset" onsubmit="return false;">
+                              <div class="panel panel-ezbooks"> 
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Old Password</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" class="form-control" name="oldPassword" required>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">New Password</label>
+                                    <div class="col-sm-9">
+                                        <input id="new-password" type="password" class="form-control" name="password" required>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Confirm Password</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" class="form-control" name="password2" data-match="#new-password" required>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Enter Code</label>
+                                    <div class="col-sm-9">
+                                        <img class="captcha">
+                                        <input type="text" class="form-control" name="captcha" required>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                              </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3"></label>
+                                    <div class="col-sm-9">
+                                        <button id="btn-pwd-reset" class="btn btn-lg btn-primary btn-block" type="submit">Change Password</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div> 
+                <div class="tab-pane fade" id="settings">
+                    <br>
+                    <div class="list-group col-md-10 col-md-offset-1 list-settings">
+                          <a href="#v=profile" class="list-group-item"><i class="fa fa-user fa-fw"></i><span>My Profile</span></a>
+                          <a href="#v=pwdReset" class="list-group-item"><i class="fa fa-key fa-fw"></i><span>Change Password</span></a>
+                          <a href="#v=businessList" class="list-group-item"><i class="fa fa-building fa-fw"></i><span>My Businesses</span></a>
+<!--                           <a href="#v=devices" class="list-group-item">My Devices</a> -->
+<!--                           <a href="#v=upgrade" class="list-group-item upgrade"><i class="icon-flash"></i><span>Upgrade</span></a>                       -->
+                          <a href="javascript:void(0)" class="list-group-item" data-toggle="modal" data-target="#confirm-logout"><i class="fa fa-sign-out fa-fw"></i><span>Logout</span></a>
+                          <a href="#v=about" class="list-group-item"><i class="fa fa-question-circle fa-fw"></i><span>About</span></a>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="about">
+                    <br>
+                    <div class="list-group col-md-10 col-md-offset-1 list-about">
+                      <a href="javascript:void(0)" class="list-group-item help"><i class="fa fa-question fa-fw"></i><span>Help/Contact Us</span></a>                          
+                      <div class="list-group-item version"><i class="fa fa-info fa-fw"></i><span class="text-version"></span></div>
+                      <a href="javascript:void(0)" class="list-group-item rateApp"><i class="fa fa-star fa-fw"></i><span>Rate App</span></a>
+                              
+                    </div>
+                </div>                 
+                <div class="tab-pane fade" id="businessList">
+                    <br>
+                    <div class="list-business"></div>
+                </div>
+<!-- Business details in one page, no easy way to edit each list -->
+<!--                 <div class="tab-pane fade" id="businessDetails"> -->
+<!--                     <div class="row"> -->
+<!--                         <div class="col-xs-12 col-sm-10 col-sm-offset-1"> -->
+<!--                             <div class="panel panel-default panel-ezbooks"> -->
+<!--                                 <div class="panel-heading clearfix"> -->
+<!--                                   <div class="panel-title pull-left"><i class="fa fa-book fa-fw"></i>Profile</div> -->
+<!--                                   <div class="panel-title pull-right"> -->
+<!--                                     <a href="#v=businessProfile"><i class="glyphicon glyphicon-cog"></i></a> -->
+<!--                                   </div> -->
+<!--                                 </div> -->
+<!--                                 <div class="panel-body"> -->
+<!--                                     <div>Name: </div> -->
+<!--                                     <div>Address: </div> -->
+<!--                                 </div>                   -->
+<!--                             </div> -->
+<!--                     </div>                     -->
+<!--                 </div> -->
+                <div class="tab-pane fade" id="businessUserList">
+                    <br>
+                    <div class="list-group col-md-10 col-md-offset-1 list-business-user">
+                    </div>          
+                </div>
+                <div class="tab-pane fade" id="businessProfile">
+                  <div class="row">
+                    <div class="col-xs-12">
+                        <form class="form-horizontal form-ezbooks form-business" onsubmit="return false;"> 
+                          <div class="ezbooks-title">Business Profile</div>
+                          <div class="panel panel-ezbooks" style="position:relative">
+                            <div class="business-logo-text">
+                                Upload your logo
+                                <input type="file" class="display-web">
+                            </div>
+                            <div class="business-logo">
+                            </div>
+                          </div>
+                          <div class="panel panel-ezbooks"> 
+                          <input type="hidden" name="id:number">
+                          <div class="form-group">
+                            <label class="control-label col-sm-3">Name</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control" name="name" placeholder="Enter Name">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-sm-3">Currency</label>
+                            <div class="col-sm-9">
+                              <select class="form-control" name="currencyId:number">
+                                <option value="6">AUD - Australian Dollar</option>
+                                <option value="22">CAD - Canadian Dollar</option>
+                                <option value="113">CHF - Switzerland Francs</option>
+                                <option value="25">CNY - Yuan Renminbi</option>
+                                <option value="38">EUR - EURO</option>
+                                <option value="37">GBP - Pound Sterling</option>
+                                <option value="50">HKD - Hong Kong Dollar</option>
+                                <option value="53">INR - India Rupees</option>
+                                <option value="61">JPY - Japanese Yen</option>
+                                <option value="95">PHP - Philippines Pesos</option>
+                                <option value="117">THB - Thailand Baht</option>
+                                <option value="124" selected>USD - US Dollar</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-sm-3">Email</label>
+                            <div class="col-sm-9">
+                                <input type="email" class="form-control" name="email" placeholder="Business Email">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-3">Fiscal Year End</label>
+                            <div class="col-xs-6 col-sm-4">
+                                <select class="form-control" name="fiscalYearEndMonth">
+                                    <option value="-1" disabled="disabled" selected>Month</option>
+                                    <option value="01">1</option>
+                                    <option value="02">2</option>
+                                    <option value="03">3</option>
+                                    <option value="04">4</option>
+                                    <option value="05">5</option>
+                                    <option value="06">6</option>
+                                    <option value="07">7</option>
+                                    <option value="08">8</option>
+                                    <option value="09">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </div>
+                            <div class="col-xs-6 col-sm-5">
+                                <select class="form-control" name="fiscalYearEndDay">
+                                    <option value="-1" disabled="disabled" selected>Day</option>
+                                    <option value="01">1</option>
+                                    <option value="02">2</option>
+                                    <option value="03">3</option>
+                                    <option value="04">4</option>
+                                    <option value="05">5</option>
+                                    <option value="06">6</option>
+                                    <option value="07">7</option>
+                                    <option value="08">8</option>
+                                    <option value="09">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                    <option value="23">23</option>
+                                    <option value="24">24</option>
+                                    <option value="25">25</option>
+                                    <option value="26">26</option>
+                                    <option value="27">27</option>
+                                    <option value="28">28</option>
+                                    <option value="29">29</option>
+                                    <option value="30">30</option>
+                                    <option value="31">31</option>
+                                </select>
+                             </div>
+                          </div>          
+                          <div class="form-group">
+                            <label class="control-label col-sm-3">Address</label>
+                            <div class="col-sm-9">
+                              <textarea class="form-control" name="address" rows="2" placeholder="Enter Address"></textarea>
+                            </div>
+                          </div>
+                          </div>  
+                          <!-- <fieldset>
+                              <legend>Users</legend>
+                          </fieldset>-->
+<!--                           <div class="form-group hidden-xs"> -->
+<!--                             <div class="col-sm-offset-3 col-sm-4"> -->
+<!--                               <button id="btn-save-business-profile" type="submit" class="btn btn-primary btn-block">Save</button> -->
+<!--                             </div> -->
+<!--                             <div class="col-sm-offset-1 col-sm-4"> -->
+<!--                               <button id="btn-cancel-business-profile" type="button" class="btn btn-success btn-block">Cancel</button> -->
+<!--                             </div>                      -->
+<!--                           </div> -->
+                        </form>
+                    </div>
+                  </div>        
+                </div>
+                <div class="tab-pane fade" id="businessUser">
+                  <div class="row">
+                    <div class="col-xs-12">
+                        <form class="form-horizontal form-ezbooks form-business-user">
+                          <div class="panel panel-ezbooks"> 
+                              <input type="hidden" name="id:number" value="0">
+                              <div class="form-group">
+                                <label class="control-label col-sm-3">Email</label>
+                                <div class="col-sm-9">
+                                  <input type="text" class="form-control" name="email" placeholder="Enter Email">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-sm-3">Role</label>
+                                <div class="col-sm-9">
+                                  <select class="form-control" name="roleId:number">
+                                    <option value="143">User</option>
+                                    <option value="142">Administrator</option>
+                                    <option value="141">Owner</option>
+                                  </select>                                    
+                                </div>
+                              </div>
+                          </div>
+                          <div class="form-group hidden-xs">
+                            <div class="col-sm-offset-3 col-sm-3">
+                              <button id="btn-save-business-user" type="button" class="btn btn-primary btn-block">Save</button>
+                            </div>
+                            <div class="col-sm-3">
+                              <button id="btn-cancel-business-user" type="button" class="btn btn-success btn-block">Cancel</button>
+                            </div>
+                            <div class="col-sm-3">
+                              <button id="btn-delete-business-user" type="button" class="btn btn-danger btn-block">Delete</button>
+                            </div>                            
+                          </div>
+                        </form>
+                    </div>
+                  </div>        
+                </div>               
+                <div class="tab-pane fade" id="businessExpenseCategoryList">
+                    <br>
+                    <div class="list-group col-md-10 col-md-offset-1 list-business-expense-category">
+                    </div>
+                    <div class="list-group col-md-10 col-md-offset-1 list-standard-expense-category">
+                    </div>                       
+                </div>
+                <div class="tab-pane fade" id="businessExpenseCategory">
+                  <div class="row">
+                    <div class="col-xs-12 ezbooks-title">
+                        Expense Category
+                    </div>
+                    <div class="col-xs-12 ">
+                        <div class="alert alert-danger alert-category-inuse">
+                            This category is currently used and can not be removed. Please find and update all expenses using this category and try again.
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <form class="form-horizontal form-ezbooks form-expense-category" onsubmit="return false;"> 
+                           <div class="panel panel-ezbooks"> 
+                           <fieldset>
+                              <input type="hidden" name="id:number">
+                              <input type="hidden" name="groupName" value="Expense Category">
+                              <div class="form-group">
+                                <label class="control-label col-sm-3">Name</label>
+                                <div class="col-sm-9">
+                                  <input type="text" class="form-control required" name="displayName" placeholder="Name of the category" required>
+                                  <div class="help-block with-errors"></div>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-sm-3">Note</label>
+                                <div class="col-sm-9">
+                                  <textarea class="form-control" name="note" rows="2" placeholder="Note of the category (optional)"></textarea>
+                                </div>
+                              </div>   
+                          </fieldset>
+                          </div>
+                          <!-- <fieldset>
+                              <legend>Users</legend>
+                          </fieldset>-->
+                          <div class="form-group hidden-xs">
+                            <div class="col-sm-offset-3 col-sm-3">
+                              <button id="btn-save-business-expense-category" type="submit" class="btn btn-primary btn-block">Save</button>
+                            </div>
+                            <div class="col-sm-3">
+                              <button id="btn-cancel-business-expense-category" type="button" class="btn btn-success btn-block">Cancel</button>
+                            </div>
+                            <div class="col-sm-3">
+                              <button id="btn-delete-business-expense-category" type="button" class="btn btn-danger btn-block">Delete</button>
+                            </div>
+                          </div>                          
+                        </form>
+                    </div>
+                  </div>                            
+                </div>                
+                <div class="tab-pane fade" id="upgrade">
+                    <br>
+                    <div class="row">
+                        <div class="product col-sm-12 col-xl-3">
+                            <div class="panel panel-primary">
+                              <div class="panel-heading">
+                                <h3 class="panel-title">Free - Ads supported</h3>
+                              </div>
+                              <div class="panel-body">
+                                  <div class="price"><sup>$</sup>0</div>
+                                  <div class="price-description">&nbsp;</div>
+                                  <hr class="visible-xl">
+                                  <ul>
+                                    <li>Expenses</li>
+                                    <li>Invoices</li>
+                                    <li>500MB storage</li>
+                                    <li>Basic export</li>
+                                    <li>2 invoice emails (sent) per month</li>
+                                    <li>1 user</li>
+                                    <li>Basic Email support</li>
+                                  </ul>
+                              </div>
+                              <div class="panel-footer">Free</div>                              
+                            </div>
+                        </div>
+                        <div class="product col-sm-12 col-xl-3">
+                            <div class="panel panel-primary">
+                              <div class="panel-heading">
+                                <h3 class="panel-title">Basic</h3>
+                              </div>
+                              <div class="panel-body">
+                                  <div class="price"><sup>$</sup>1.99</div>
+                                  <div class="price-description">per month when paid annually</div>
+                                  <hr class="visible-xl">
+                                  <ul>
+                                    <li>Expenses</li>
+                                    <li>Invoices</li>
+                                    <li>Unlimited storage and exports</li>
+                                    <li>Unlimited invoice emails per month</li>
+                                    <li>Ads. free</li>
+                                    <li>1 user</li>
+                                    <li>Email support</li>
+                                  </ul>
+                              </div>
+<!--                               <div class="panel-footer"><button id="btn-paypal-buy" type="button" class="btn btn-primary">Upgrade</button></div> -->
+                                   <div class="panel-footer"><a href="mailto:support@myezbooks.com" class="btn btn-primary">Buy Now</a></div>
+                            </div>
+                        </div>
+                        <div class="product col-sm-12 col-xl-3">
+                            <div class="panel panel-success">
+                              <div class="panel-heading">
+                                <h3 class="panel-title">Premium - Best Value</h3>
+                              </div>
+                              <div class="panel-body">
+                                  <div class="price"><sup>$</sup>4.99</div>
+                                  <div class="price-description">per month when paid annually</div>
+                                  <hr class="visible-xl">
+                                  <ul>
+                                    <li>Expenses</li>
+                                    <li>Invoices</li>
+                                    <li>Documents</li>
+                                    <li>Fine-grained permission controls</li>
+                                    <li>Unlimited storage and exports</li>
+                                    <li>Unlimited invoice emails per month</li>
+                                    <li>Ads. free</li>
+                                    <li>2 users</li>
+                                    <li>Email support</li>
+                                  </ul>
+                              </div>
+                              <div class="panel-footer"><a href="mailto:support@myezbooks.com" class="btn btn-success">Buy Now</a></div>
+<!--                               <div class="panel-footer"><button id="btn-paypal-buy" type="button" class="btn btn-success">Upgrade</button></div> -->
+                            </div>
+                        </div>
+                        <div class="product col-sm-12 col-xl-3">
+                            <div class="panel panel-primary">
+                              <div class="panel-heading">
+                                <h3 class="panel-title">Ultimate</h3>
+                              </div>
+                              <div class="panel-body">
+                                  <div class="price"><sup>$</sup>9.99</div>
+                                  <div class="price-description">per month when paid annually</div>
+                                  <hr class="visible-xl">
+                                  <ul>
+                                    <li>Expenses</li>
+                                    <li>Invoices</li>
+                                    <li>Documents</li>
+                                    <li>Fine-grained permission controls</li>
+                                    <li>Unlimited storage and exports</li>
+                                    <li>Unlimited invoice emails per month</li>
+                                    <li>Ads. free</li>
+                                    <li>Unlimited users per business</li>
+                                    <li>Email support</li>
+                                  </ul>
+                              </div>
+                              <div class="panel-footer"><a href="mailto:support@myezbooks.com" class="btn btn-primary">Buy Now</a></div>                              
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="externalAttachment">
+                    <h4>To attach a file from another app (e.g. Mail, Dropbox) to an exisiting expense item or a brand new expense item, follow the instructions below:</h4>
+                    <div class="iOSAttachmentInstruction">
+                    <h3>Step 1*</h3>
+                    <p>Open the file from the other app and tap on the 'share' <img class="iOSShareIcon" src="images/Upload-Vector.png" style="width:16px; height:16px"> button (usually at the top right corner). Once the 'Share' menu pops up on the screen, tap on 'Open in EZBooks'.</p>
+                    <p><img id="iOSShare1" src="images/iOSShare1.png" style="width:300px"></p>
+                    <h3>Step 2</h3>
+                    <p>EZBooks will be opened with 2 options:<br>
+                    1. Create a new expense item with the incoming file.<br>
+                    2. Attach the incoming file to an existing expense item.</p>
+                    <p><img id="iOSShare2" src="images/iOSShare2.png" style="width:300px"></p>
+                    <h3>Step 3</h3>
+                    <p>Choose 'Attach to existing' if you'd like to attach the file to an existing expense item, then tap on the expense item. The file will be attached to the selected expense item.</p>
+                    <p>Choose 'Create new' to create a brand new expense item with the file.</p>
+                    <h3>*Note</h3>
+                    <p>You may not see the 'share' <img class="iOSShareIcon" src="images/Upload-Vector.png" style="width:16px; height:16px"> button in some of the apps, for example, in Google Drive app, once you open the file, you will see a similar 'open in' button.</p>
+                    <p><img id="iOSShare3" src="images/iOSShare3.png" style="width:300px"></p>
+                    </div>
+                    <div class="AndroidAttachmentInstruction">
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="contactList" data-ng-controller="contactsController">
+                    <br>
+                    <div class="list-group col-md-10 col-md-offset-1">
+                      <a href="#v=contact&id={{ c.id }}" class="list-group-item" ng-repeat="c in (orderedContacts = (contacts | orderBy:'companyName'))">
+                        <div ng-if="c.companyName.toLowerCase().charAt(0)!=orderedContacts[$index-1].companyName.toLowerCase().charAt(0)" style="margin:-15px -15px 0 -15px; padding-left: 15px; border-bottom:1px solid rgb(221, 221, 221); background-color:rgb(221, 221, 221);font-weight:bold"> {{c.companyName.toUpperCase().charAt(0)}}</div>
+                        <b class="list-group-item-heading"><span class="visible-sm-inline">Company Name: </span>{{ c.companyName }}</b>
+                        <div class="list-group-item-text"><span class="visible-sm-inline"><b>Email:</b></span>{{c.email}}, <span class="visible-sm-inline"><b>Contact:</b></span>{{c.contactName}}, <span class="visible-sm-inline"><b>Phone:</b></span>{{c.phone}}</div>
+                      </a>
+                    </div>
+                    <div class="col-md-10 col-md-offset-1">
+                        <div style="text-align:center">{{contacts.length}} Contacts. <span ng-if="contacts.length==0">Click "Plus" to add contacts.</span></div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="contact" data-ng-controller="contactController">
+                    <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                       <form name="contactForm" class="form-horizontal form-ezbooks form-contact" novalidate>
+                         <div class="panel panel-ezbooks">
+                              <div class="form-group" ng-class="{'has-error':contactForm.companyName.$invalid}">
+                                <input type="hidden" ng-model="contact.id" integer>
+                                <label class="control-label col-sm-4">Company Name</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="companyName" ng-model="contact.companyName" required>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-sm-4">Contant Name</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" ng-model="contact.contactName">
+                                </div>
+                              </div>
+                              <div class="form-group" ng-class="{'has-error':contactForm.email.$invalid && !contactForm.email.$pristine}">
+                                <label class="control-label col-sm-4">Email</label>
+                                <div class="col-sm-8">
+                                    <input type="email" class="form-control" name="email" ng-model="contact.email">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-sm-4">Phone</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" ng-model="contact.phone">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-sm-4">Address</label>
+                                <div class="col-sm-8">
+                                    <textarea class="form-control" rows="2" ng-model="contact.address"></textarea>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-sm-4">Note</label>
+                                <div class="col-sm-8">
+                                    <textarea class="form-control" rows="2" ng-model="contact.note"></textarea>
+                                </div>
+                              </div>
+                         </div>
+                       </form>
+                    </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="debug">
+                    <div class="row">
+                        <h1 class="hidden-xs">DEBUG</h1>
+                        <div class="col-xs-12">
+                            <form class="form-horizontal form-ezbooks form-debug" onsubmit="return false;">
+                              <div class="form-group">
+                                <label class="control-label col-sm-3">Environment</label>
+                                <div class="col-sm-9">
+                                  <select id="select-environment" class="form-control select-environment" name="environment" placeholder="Select Environment" required>
+                                    <option value="dev">Development</option>
+                                    <option value="qa">QA</option>
+                                    <option value="prod">Prod</option>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <div class="col-xs-4">
+                                  <button id="btn-reset-env" type="button" class="btn btn-primary btn-block">Reset Env</button>
+                                </div>
+                                <div class="col-xs-4">
+                                  <button id="btn-clear-logs" type="button" class="btn btn-success btn-block">Clear Logs</button>
+                                </div>
+                                <div class="col-xs-4">
+                                  <button id="btn-reload-app" type="button" class="btn btn-info btn-block">Reload</button>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-sm-3">Console</label>
+                                <div class="col-sm-9">
+                                    <textarea class="form-control" id="text-console"></textarea>
+                                </div>                                
+                              </div>
+                              <div class="form-group">
+                                <div class="col-xs-6">
+                                  <button id="btn-console-excute" type="button" class="btn btn-primary btn-block">Execute</button>
+                                </div>
+                                <div class="col-xs-6">
+                                  <button id="btn-admin" type="button" class="btn btn-info btn-block">Admin</button>
+                                </div>                                
+                              </div>                              
+                            </form>
+                        </div>                        
+                    </div>
+                    <div id="logs" class="row logs">
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </section>
+    <div class="btn-container-add">
+       <div class="round-button-circle">
+           <button id="btn-add" class="btn btn-primary round-button">
+               <i class="fa fa-plus fa-2x"></i>
+           </button>
+       </div>
+    </div>
+
+    <div class="modal fade" id="confirm-logout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" style="margin: 60px auto;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Confirm Logout</h4>
+                </div>
+            
+                <div class="modal-body">
+                    <p>You are about to logout, do you want to proceed?</p>
+                    <p class="debug-url"></p>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                    <a href="javascript:void(0)" id="logout-btn" class="btn btn-danger" data-dismiss="modal">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="dialog-confirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-top">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Confirm Logout</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Confirm Body</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-cancel"></button>
+                    <button type="button" class="btn btn-danger danger btn-confirm"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="dialog-attachment" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-bottom" style="margin: 60px auto;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                    Choose "Create New" to attach this file to a new expense item OR choose "Attach to Existing" to attach this file to an existing one.
+                </div>
+                <div class="modal-footer">
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-6" style="margin-bottom: 3px;">
+                        <button id="btn-attachment-new" type="button" class="btn btn-primary btn-block btn-new">Create New</button>
+                    </div>
+                    <div class="col-xs-12 col-sm-6" style="margin-bottom: 3px;">
+                        <button id="btn-attachment-existing" type="button" class="btn btn-primary btn-block btn-add-existing">Attach to Existing</button>
+                    </div>
+                  </div>      
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="dialog-add-payment" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-top">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Add Payment</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal form-ezbooks form-add-payment" onsubmit="return false;">
+                      <div class="form-group">
+                        <label class="control-label col-sm-4">Payment Date</label>
+                        <div class="col-sm-8">
+                            <input type="date" class="form-control" name="paymentDate">
+                        </div>                                
+                      </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-cancel">Cancel</button>
+                    <button type="button" class="btn btn-danger danger btn-confirm">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</view>
+<div class="screen-mask">
+</div>
+<!-- leave the swipers on top of html, so that <view> go above them -->
+<!-- <div id="left-swiper" class="left-swiper" style="position:fixed; z-index:-1; top:0; left:0; bottom:0; width:50px;"> -->
+<!-- </div> -->
+<!-- <div id="right-swiper" class="right-swiper" style="position:fixed; z-index:-1; top:0; right:0; bottom:0; width:50px;"> -->
+<!-- </div> -->

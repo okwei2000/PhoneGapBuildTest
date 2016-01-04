@@ -1,0 +1,4 @@
+xs: (<=768px) -  Phones
+sm: (>768px and <992px) - tablet
+md: (>=992px and <1200px) - Desktops 
+lg: (>=1200px)
